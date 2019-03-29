@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
-function Leads() {
+function Login() {
   return <Fragment>Hello!</Fragment>;
 }
 
-export default Leads;
+export default Login;

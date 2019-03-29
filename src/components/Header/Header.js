@@ -1,24 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+import MainNavigation from "./MainNavigation/MainNavigation";
 
-  componentDidMount() {}
-
-  render() {
-    return (
-      <header id="header">
-        <div className="container">
-          <div className="row align-items-center justify-content-between">
-            <div className="col-auto">Logo !</div>
-          </div>
-        </div>
-      </header>
-    );
-  }
+export default function Header() {
+  return (
+    <header id="header" className="border-bottom mb-4 pt-2 pb-2">
+      <div className="container">
+        <MainNavigation />
+      </div>
+    </header>
+  );
 }
-
-export default Header;
