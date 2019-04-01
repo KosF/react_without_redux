@@ -31,8 +31,7 @@ export function logIn(data, cb) {
 }
 
 export function logOut() {
-  return false;
-  // return {
-  //   type: LOG_OUT
-  // };
+  return {
+    type: LOG_OUT
+  };
 }
