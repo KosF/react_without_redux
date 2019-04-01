@@ -3,15 +3,18 @@ import { BrowserRouter } from "react-router-dom";
 
 import Header from "Components/Header/Header";
 import PagesContent from "Components/PagesContent/PagesContent";
+import Auth from "./hoc/Auth/Auth";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Fragment>
-        <Header />
-        <PagesContent />
-      </Fragment>
-    </BrowserRouter>
+    <Auth>
+      <BrowserRouter>
+        <Fragment>
+          <Header />
+          <PagesContent />
+        </Fragment>
+      </BrowserRouter>
+    </Auth>
   );
 }
 

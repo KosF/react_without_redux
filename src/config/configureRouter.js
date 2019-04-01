@@ -1,7 +1,7 @@
-import Home from "Pages/Home";
-import Login from "Pages/Login";
-import News from "Pages/News";
-import Profile from "Pages/Profile";
+import Home from "../pages/Home";
+import Login from "../pages/Login";
+import News from "../pages/News";
+import Profile from "../pages/Profile";
 
 module.exports = [
   {
