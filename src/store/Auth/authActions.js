@@ -1,4 +1,4 @@
-import isAuth from "Src/helpers/isAuth";
+import isAuth from "Src/helpers/checkCredentials";
 import { AUTH_SUCCESS, AUTH_FAILURE, LOG_OUT } from "./authConstants";
 
 export const authSuccess = user => ({

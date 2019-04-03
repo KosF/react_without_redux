@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 // import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -15,4 +16,4 @@ Auth.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.node]).isRequired
 };
 
-export default connect(mapStateToProps)(Auth);
+export default withRouter(connect(mapStateToProps)(Auth));

@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Switch, Route, withRouter } from "react-router-dom";
+import { Switch, Route, withRouter, Redirect } from "react-router-dom";
 
 import routes from "Src/config/configureRouter";
 
 function PagesContent({ location }) {
   return (
-    <main className="pages-content flex-grow-1">
-      <div className="container">
-        <Switch location={location}>
-          {routes.map(route => (
+    <main className="container">
+      <Switch location={location}>
+        {routes.map(route =>
+          !route.private ? (
             <Route
               key={route.component ? route.component.name : route.path}
               path={route.path}
@@ -17,9 +17,14 @@ function PagesContent({ location }) {
               render={route.render}
               exact={route.exact}
             />
-          ))}
-        </Switch>
-      </div>
+          ) : (
+            <Redirect
+              key={route.component ? route.component.name : route.path}
+              to="/login"
+            />
+          )
+        )}
+      </Switch>
     </main>
   );
 }

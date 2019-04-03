@@ -22,6 +22,7 @@ module.exports = [
   {
     path: "/profile",
     component: Profile,
-    exact: true
+    exact: true,
+    private: true
   }
 ];
