@@ -1,18 +1,26 @@
 import isAuth from "Src/helpers/checkCredentials";
-import { AUTH_SUCCESS, AUTH_FAILURE, LOG_OUT } from "./authConstants";
+import {
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOG_OUT
+} from "./authConstants";
 
-export const authSuccess = user => ({
-  type: AUTH_SUCCESS,
-  user: {
-    name: user.username
+export const loginRequest = () => ({
+  type: LOGIN_REQUEST
+});
+
+export const loginSuccess = (userName, value) => ({
+  type: LOGIN_SUCCESS,
+  data: {
+    userName,
+    isAuth: value
   }
 });
 
-export const authFailure = () => ({
-  type: AUTH_FAILURE,
-  error: {
-    errorMsg: "Имя пользователя или пароль введены не корректно"
-  }
+export const loginFailure = error => ({
+  type: LOGIN_FAILURE,
+  error
 });
 
 export const signOut = () => ({
@@ -21,11 +29,13 @@ export const signOut = () => ({
 
 export function logIn(data, cb) {
   return dispatch => {
+    dispatch(loginRequest());
+
     if (isAuth(data)) {
-      dispatch(authSuccess);
+      dispatch(loginSuccess(data.username, true));
       cb();
     } else {
-      dispatch(authFailure);
+      dispatch(loginFailure);
     }
   };
 }

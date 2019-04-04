@@ -1,18 +1,17 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { BrowserRouter } from "react-router-dom";
 
-import Header from "Components/Header/Header";
-import Auth from "Src/hoc/Auth/Auth";
+import Header from "Containers/Header/Header";
 
 import PagesContent from "Components/PagesContent/PagesContent";
 
 function App() {
   return (
     <BrowserRouter>
-      <Auth>
+      <Fragment>
         <Header />
         <PagesContent />
-      </Auth>
+      </Fragment>
     </BrowserRouter>
   );
 }

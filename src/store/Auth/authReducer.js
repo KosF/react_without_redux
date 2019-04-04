@@ -1,21 +1,32 @@
-import { AUTH_SUCCESS, AUTH_FAILURE, LOG_OUT } from "./authConstants";
+import {
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOG_OUT
+} from "./authConstants";
 
 const initialState = {
   user: null,
-  error: null
+  error: null,
+  isAuth: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case AUTH_SUCCESS:
+    case LOGIN_REQUEST:
       return {
         ...state,
-        user: {
-          name: action.username
-        }
+        user: action.username
       };
 
-    case AUTH_FAILURE:
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        user: action.username,
+        isAuth: action.isAuth
+      };
+
+    case LOGIN_FAILURE:
       return {
         ...state,
         error: action.error

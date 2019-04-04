@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
-function Profile() {
+function ProfilePage() {
   return <Fragment>Profile!</Fragment>;
 }
 
-export default Profile;
+export default ProfilePage;

@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
+import { logIn, logOut } from "Src/store/Auth/authActions";
 import checkCredentials from "Src/helpers/checkCredentials";
+import * as cookie from "Src/helpers/cookie";
+import PropTypes from "prop-types";
 
 class Login extends Component {
   constructor(props) {
@@ -9,7 +14,8 @@ class Login extends Component {
     this.state = {
       username: "",
       password: "",
-      isAuth: false
+      isAuth: false,
+      errorMsg: false
     };
 
     this.handleChangeInput = this.handleChangeInput.bind(this);
@@ -22,19 +28,35 @@ class Login extends Component {
 
     this.setState(prevState => ({
       ...prevState,
+      errorMsg: false,
       [fieldName]: value
     }));
   }
 
   handleSubmitForm(e) {
     e.preventDefault();
+    const { history, location } = this.props;
     const { username, password } = this.state;
     const validCredentials = checkCredentials({
       username,
       password
     });
 
-    return validCredentials;
+    const nextLocation = location.prevLocation ? location.prevLocation : "/";
+
+    if (!validCredentials) {
+      this.setState({ errorMsg: true });
+    } else {
+      cookie.setCookie("isAuth", true);
+
+      this.props.logIn(
+        {
+          username,
+          password
+        },
+        () => history.push(nextLocation)
+      );
+    }
   }
 
   render() {
@@ -67,6 +89,15 @@ class Login extends Component {
                 />
               </div>
             </div>
+            {this.state.errorMsg && (
+              <div className="row mb-3">
+                <div className="col">
+                  <p className="text-danger mb-0">
+                    Имя пользователя или пароль введены не верно
+                  </p>
+                </div>
+              </div>
+            )}
             <div className="row">
               <div className="col">
                 <input
@@ -83,4 +114,23 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+  isAuth: state.isAuth
+});
+
+const mapDispatchToProps = { logIn, logOut };
+
+Login.propTypes = {
+  history: PropTypes.shape({}).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired,
+  logIn: PropTypes.func.isRequired
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Login)
+);

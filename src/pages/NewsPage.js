@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
-function News() {
+function NewsPage() {
   return <Fragment>News!</Fragment>;
 }
 
-export default News;
+export default NewsPage;

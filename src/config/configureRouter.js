@@ -1,27 +1,27 @@
-import Home from "../pages/Home";
-import Login from "../pages/Login";
-import News from "../pages/News";
-import Profile from "../pages/Profile";
+import HomePage from "../pages/HomePage";
+import LoginPage from "../pages/LoginPage";
+import NewsPage from "../pages/NewsPage";
+import ProfilePage from "../pages/ProfilePage";
 
 module.exports = [
   {
     path: "/",
-    component: Home,
+    component: HomePage,
     exact: true
   },
   {
     path: "/login",
-    component: Login,
+    component: LoginPage,
     exact: true
   },
   {
     path: "/news",
-    component: News,
+    component: NewsPage,
     exact: true
   },
   {
     path: "/profile",
-    component: Profile,
+    component: ProfilePage,
     exact: true,
     private: true
   }
