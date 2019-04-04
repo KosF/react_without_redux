@@ -5,14 +5,11 @@ import thunk from "redux-thunk";
 import rootReducer from "./rootReducer";
 
 const middleware = [thunk];
-const initialState = {
-  isAuth: false
-};
 
 function configureStore() {
   return createStore(
     rootReducer,
-    { ...initialState },
+    {}, // initialState
     composeWithDevTools(applyMiddleware(...middleware))
   );
 }

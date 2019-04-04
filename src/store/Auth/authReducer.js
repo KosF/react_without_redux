@@ -11,7 +11,7 @@ const initialState = {
   isAuth: false
 };
 
-export default (state = initialState, action) => {
+function authReducer(state = initialState, action) {
   switch (action.type) {
     case LOGIN_REQUEST:
       return {
@@ -40,4 +40,6 @@ export default (state = initialState, action) => {
     default:
       return state;
   }
-};
+}
+
+export default authReducer;

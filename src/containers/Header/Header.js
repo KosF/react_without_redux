@@ -60,7 +60,11 @@ const mapStateToProps = store => ({
 
 Header.propTypes = {
   history: PropTypes.oneOfType([PropTypes.object, PropTypes.node]).isRequired,
-  isAuth: PropTypes.bool.isRequired
+  isAuth: PropTypes.bool
+};
+
+Header.defaultProps = {
+  isAuth: false
 };
 
 export default withRouter(connect(mapStateToProps)(Header));

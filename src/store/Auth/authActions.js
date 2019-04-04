@@ -23,7 +23,7 @@ export const loginFailure = error => ({
   error
 });
 
-export const signOut = () => ({
+export const loginOut = () => ({
   type: LOG_OUT
 });
 
@@ -41,7 +41,7 @@ export function logIn(data, cb) {
 }
 
 export function logOut() {
-  return {
-    type: LOG_OUT
+  return dispatch => {
+    dispatch(loginOut());
   };
 }
