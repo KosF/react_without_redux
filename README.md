@@ -2,7 +2,7 @@
 
 Подробное [описание задачи](https://hackmd.io/s/BJWYLsmD4).
 
-##Install
+## Install
 
 To install dependencies
 
@@ -10,14 +10,14 @@ To install dependencies
 npm install
 ```
 
-##Run
+## Run
 
 To run app
 ```
 npm start
 ```
 
-##Build
+## Build
 
 To build app
 ```
