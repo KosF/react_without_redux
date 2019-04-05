@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import { logIn, logOut } from "Src/store/Auth/authActions";
+import { setCookie } from "Src/helpers/cookie";
 import checkCredentials from "Src/helpers/checkCredentials";
-import * as cookie from "Src/helpers/cookie";
-import PropTypes from "prop-types";
 
 class Login extends Component {
   constructor(props) {
@@ -47,14 +47,10 @@ class Login extends Component {
     if (!validCredentials) {
       this.setState({ errorMsg: true });
     } else {
-      cookie.setCookie("isAuth", true);
+      setCookie("isAuth", true);
 
-      this.props.logIn(
-        {
-          username,
-          password
-        },
-        () => history.push(nextLocation)
+      this.props.logIn({ username, password }, () =>
+        history.push(nextLocation)
       );
     }
   }
@@ -64,7 +60,7 @@ class Login extends Component {
       <div className="d-flex justify-content-center">
         <form
           className="col-6 pt-4 pr-3 pb-4 pl-3 bg-light"
-          onSubmit={e => this.handleSubmitForm(e)}
+          onSubmit={this.handleSubmitForm}
         >
           <fieldset>
             <div className="row mb-3">
@@ -74,7 +70,7 @@ class Login extends Component {
                   data-input-name="username"
                   className="form-control"
                   placeholder="Name"
-                  onChange={e => this.handleChangeInput(e)}
+                  onChange={this.handleChangeInput}
                 />
               </div>
             </div>
@@ -85,7 +81,7 @@ class Login extends Component {
                   data-input-name="password"
                   className="form-control"
                   placeholder="Password"
-                  onChange={e => this.handleChangeInput(e)}
+                  onChange={this.handleChangeInput}
                 />
               </div>
             </div>
@@ -114,8 +110,8 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  isAuth: state.isAuth
+const mapStateToProps = store => ({
+  isAuth: store.authReducer.isAuth
 });
 
 const mapDispatchToProps = { logIn, logOut };

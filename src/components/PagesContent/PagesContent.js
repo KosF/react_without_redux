@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import { Switch, Route, withRouter, Redirect } from "react-router-dom";
 
 import routes from "Src/config/configureRouter";
-import * as cookie from "Src/helpers/cookie";
+import { getCookie } from "Src/helpers/cookie";
 
 function PagesContent({ location }) {
-  const isAuth = !!cookie.getCookie("isAuth");
+  const isAuth = !!getCookie("isAuth");
 
   return (
     <main className="container">

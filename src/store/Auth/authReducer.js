@@ -8,6 +8,7 @@ import {
 const initialState = {
   user: null,
   error: null,
+  loading: false,
   isAuth: false
 };
 
@@ -16,25 +17,29 @@ function authReducer(state = initialState, action) {
     case LOGIN_REQUEST:
       return {
         ...state,
-        user: action.username
+        user: action.userName,
+        loading: true
       };
 
     case LOGIN_SUCCESS:
       return {
         ...state,
-        user: action.username,
+        user: action.userName,
+        loading: false,
         isAuth: action.isAuth
       };
 
     case LOGIN_FAILURE:
       return {
         ...state,
+        loading: false,
         error: action.error
       };
 
     case LOG_OUT:
       return {
-        ...state
+        ...state,
+        loading: false
       };
 
     default:

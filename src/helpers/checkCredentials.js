@@ -1,5 +1,7 @@
 export default data => {
+  const { username, password } = data;
   const validCredentials =
-    data.username === "admin" && data.password.toString() === "12345";
+    username === "admin" && password.toString() === "12345";
+
   return validCredentials;
 };

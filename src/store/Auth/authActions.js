@@ -1,4 +1,5 @@
 import isAuth from "Src/helpers/checkCredentials";
+import { setCookie } from "Src/helpers/cookie";
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -6,16 +7,15 @@ import {
   LOG_OUT
 } from "./authConstants";
 
-export const loginRequest = () => ({
-  type: LOGIN_REQUEST
+export const loginRequest = userName => ({
+  type: LOGIN_REQUEST,
+  userName
 });
 
 export const loginSuccess = (userName, value) => ({
   type: LOGIN_SUCCESS,
-  data: {
-    userName,
-    isAuth: value
-  }
+  userName,
+  isAuth: value
 });
 
 export const loginFailure = error => ({
@@ -23,13 +23,9 @@ export const loginFailure = error => ({
   error
 });
 
-export const loginOut = () => ({
-  type: LOG_OUT
-});
-
 export function logIn(data, cb) {
   return dispatch => {
-    dispatch(loginRequest());
+    dispatch(loginRequest(data.username));
 
     if (isAuth(data)) {
       dispatch(loginSuccess(data.username, true));
@@ -40,8 +36,13 @@ export function logIn(data, cb) {
   };
 }
 
-export function logOut() {
+export function logOut(cb) {
   return dispatch => {
-    dispatch(loginOut());
+    dispatch({
+      type: LOG_OUT
+    });
+
+    setCookie("isAuth", false);
+    cb();
   };
 }
