@@ -24,5 +24,5 @@ To build app
 npm run build
 ```
 
-###Author
+#### Author
 Konstantin Filipenkov - Front-End-Developer
