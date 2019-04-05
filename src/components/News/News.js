@@ -43,12 +43,11 @@ News.propTypes = {
   getNews: PropTypes.func.isRequired,
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   loading: PropTypes.bool.isRequired,
-  newsList: PropTypes.arrayOf(PropTypes.object)
+  newsList: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 News.defaultProps = {
-  error: null,
-  newsList: []
+  error: null
 };
 
 export default connect(
