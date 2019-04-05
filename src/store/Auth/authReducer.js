@@ -38,8 +38,7 @@ function authReducer(state = initialState, action) {
 
     case LOG_OUT:
       return {
-        ...state,
-        loading: false
+        ...initialState
       };
 
     default:

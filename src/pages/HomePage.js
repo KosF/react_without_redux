@@ -1,7 +1,11 @@
 import React, { Fragment } from "react";
 
 function HomePage() {
-  return <Fragment>Home page</Fragment>;
+  return (
+    <Fragment>
+      <h2>Home page</h2>
+    </Fragment>
+  );
 }
 
 export default HomePage;
