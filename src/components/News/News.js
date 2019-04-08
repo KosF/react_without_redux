@@ -5,10 +5,14 @@ import PropTypes from "prop-types";
 import { getNews } from "Src/store/News/newsActions";
 import NewsItem from "./NewsItem/NewsItem";
 
+// Fix for offline state
+let count = 0;
+
 function News({ ...props }) {
   useEffect(() => {
-    if (!props.newsList.length) {
+    if (!props.newsList.length && count < 10) {
       props.getNews();
+      count += 1;
     }
   });
 
