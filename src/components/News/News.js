@@ -10,11 +10,11 @@ let count = 0;
 
 function News({ ...props }) {
   useEffect(() => {
-    if (!props.newsList.length && count < 10) {
+    if (!props.newsList.length && count < 5) {
       props.getNews();
       count += 1;
     }
-  });
+  }, [props.newsList]);
 
   const { loading, error, newsList } = props;
 
