@@ -8,6 +8,7 @@ import NewsItem from "./NewsItem/NewsItem";
 function News({ newsList, loading, error, ...props }) {
   useEffect(() => {
     props.getNews();
+    // TODO: temporary solution
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
