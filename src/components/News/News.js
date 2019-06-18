@@ -8,7 +8,8 @@ import NewsItem from "./NewsItem/NewsItem";
 function News({ newsList, loading, error, ...props }) {
   useEffect(() => {
     props.getNews();
-  }, [props]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (loading) {
     return <p>Loading...</p>;
