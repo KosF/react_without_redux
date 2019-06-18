@@ -8,7 +8,7 @@ import NewsItem from "./NewsItem/NewsItem";
 function News({ newsList, loading, error, ...props }) {
   useEffect(() => {
     props.getNews();
-  }, [newsList, props]);
+  }, [props]);
 
   if (loading) {
     return <p>Loading...</p>;

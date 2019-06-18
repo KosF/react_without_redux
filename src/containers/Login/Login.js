@@ -66,7 +66,7 @@ function Login({ ...props }) {
           <div className="row mb-3">
             <div className="col">
               <input
-                type="text"
+                type="password"
                 data-input-name="password"
                 className="form-control"
                 placeholder="Password"
