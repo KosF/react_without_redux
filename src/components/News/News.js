@@ -5,25 +5,17 @@ import PropTypes from "prop-types";
 import { getNews } from "Src/store/News/newsActions";
 import NewsItem from "./NewsItem/NewsItem";
 
-// Fix for offline state
-let count = 0;
-
-function News({ ...props }) {
+function News({ newsList, loading, error, ...props }) {
   useEffect(() => {
-    if (!props.newsList.length && count < 5) {
-      props.getNews();
-      count += 1;
-    }
-  }, [props.newsList]);
-
-  const { loading, error, newsList } = props;
+    props.getNews();
+  }, [newsList, props]);
 
   if (loading) {
-    return "Loading...";
+    return <p>Loading...</p>;
   }
 
   if (error) {
-    return error.message;
+    return <p>{error.message}</p>;
   }
 
   return (
