@@ -18,14 +18,14 @@ function newsReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        newsList: action.newsList
+        newsList: action.payload
       };
 
     case NEWS_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.error
+        error: action.payload
       };
 
     default:

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { getNews } from "Src/store/News/newsActions";
+import getNews from "Src/store/News/newsActions";
 import NewsItem from "./NewsItem/NewsItem";
 
 function News({ newsList, loading, error, ...props }) {
@@ -41,11 +41,12 @@ News.propTypes = {
   getNews: PropTypes.func.isRequired,
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   loading: PropTypes.bool.isRequired,
-  newsList: PropTypes.arrayOf(PropTypes.object).isRequired
+  newsList: PropTypes.arrayOf(PropTypes.object)
 };
 
 News.defaultProps = {
-  error: null
+  error: null,
+  newsList: []
 };
 
 export default connect(
