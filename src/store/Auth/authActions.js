@@ -23,26 +23,22 @@ export const loginFailure = error => ({
   error
 });
 
-export function logIn(data, cb) {
-  return dispatch => {
-    dispatch(loginRequest(data.username));
+export const logIn = (data, cb) => dispatch => {
+  dispatch(loginRequest(data.username));
 
-    if (isAuth(data)) {
-      dispatch(loginSuccess(data.username, true));
-      cb();
-    } else {
-      dispatch(loginFailure);
-    }
-  };
-}
-
-export function logOut(cb) {
-  return dispatch => {
-    dispatch({
-      type: LOG_OUT
-    });
-
-    setCookie("isAuth", false);
+  if (isAuth(data)) {
+    dispatch(loginSuccess(data.username, true));
     cb();
-  };
-}
+  } else {
+    dispatch(loginFailure);
+  }
+};
+
+export const logOut = callback => dispatch => {
+  dispatch({
+    type: LOG_OUT
+  });
+
+  setCookie("isAuth", false);
+  callback();
+};
