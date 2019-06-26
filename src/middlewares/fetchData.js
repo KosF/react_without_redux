@@ -27,7 +27,7 @@ const fetchData = store => next => action => {
         payload: error
       });
 
-      return Promise.reject(error); // ?
+      return Promise.reject(error);
     });
 };
 

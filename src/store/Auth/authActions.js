@@ -23,12 +23,12 @@ export const loginFailure = error => ({
   error
 });
 
-export const logIn = (data, cb) => dispatch => {
+export const logIn = (data, callback) => dispatch => {
   dispatch(loginRequest(data.username));
 
   if (isAuth(data)) {
     dispatch(loginSuccess(data.username, true));
-    cb();
+    callback();
   } else {
     dispatch(loginFailure);
   }
