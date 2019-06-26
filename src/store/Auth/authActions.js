@@ -35,9 +35,7 @@ export const logIn = (data, cb) => dispatch => {
 };
 
 export const logOut = callback => dispatch => {
-  dispatch({
-    type: LOG_OUT
-  });
+  dispatch({ type: LOG_OUT });
 
   setCookie("isAuth", false);
   callback();
