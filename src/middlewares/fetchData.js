@@ -1,8 +1,10 @@
 export const CALL_API = "CALL_API";
 
 const fetchData = store => next => action => {
-  if (action.type !== CALL_API) {
-    return next(action);
+  if (action.type !== CALL_API || action.type === undefined) {
+    next(action);
+
+    return;
   }
 
   const { types, callAPI } = action.payload;
@@ -10,14 +12,14 @@ const fetchData = store => next => action => {
 
   store.dispatch({ type: REQUEST });
 
-  return callAPI()
+  callAPI()
     .then(response => {
       store.dispatch({
         type: SUCCESS,
         payload: response
       });
 
-      // return Promise.resolve(store.getState()); // ?
+      return Promise.resolve(response);
     })
     .catch(error => {
       store.dispatch({
@@ -25,7 +27,7 @@ const fetchData = store => next => action => {
         payload: error
       });
 
-      // return Promise.reject(error); // ?
+      return Promise.reject(error); // ?
     });
 };
 

@@ -1,12 +1,12 @@
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-// import thunk from "redux-thunk";
+import thunk from "redux-thunk";
 
 import myLogger from "../middlewares/myLogger";
 import fetchData from "../middlewares/fetchData";
 import rootReducer from "./rootReducer";
 
-const middleware = [myLogger, fetchData]; // thunk,
+const middleware = [thunk, myLogger, fetchData];
 
 function configureStore() {
   return createStore(
