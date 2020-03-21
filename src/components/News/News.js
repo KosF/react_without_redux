@@ -5,11 +5,10 @@ import PropTypes from "prop-types";
 import { getNews } from "Src/store/News/newsActions";
 import NewsItem from "./NewsItem/NewsItem";
 
-function News({ newsList, loading, error, ...props }) {
+function News({ newsList, loading, error, loadNewsList }) {
   useEffect(() => {
-    props.getNews();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    loadNewsList();
+  }, [loadNewsList]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -34,10 +33,10 @@ const mapStateToProps = store => ({
   error: store.newsReducer.error
 });
 
-const mapDispatchToProps = { getNews };
+const mapDispatchToProps = { loadNewsList: getNews };
 
 News.propTypes = {
-  getNews: PropTypes.func.isRequired,
+  loadNewsList: PropTypes.func.isRequired,
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   loading: PropTypes.bool.isRequired,
   newsList: PropTypes.arrayOf(PropTypes.object).isRequired
