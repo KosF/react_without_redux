@@ -1,5 +1,6 @@
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
+import MoviesPage from "../pages/MoviesPage";
 import NewsPage from "../pages/NewsPage";
 import ProfilePage from "../pages/ProfilePage";
 
@@ -17,6 +18,11 @@ module.exports = [
   {
     path: "/news",
     component: NewsPage,
+    exact: true
+  },
+  {
+    path: "/movies",
+    component: MoviesPage,
     exact: true
   },
   {

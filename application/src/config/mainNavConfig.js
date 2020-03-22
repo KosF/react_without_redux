@@ -10,6 +10,11 @@ const dataMainNav = [
     exact: true
   },
   {
+    text: "Movies (GraphQL)",
+    url: "/movies",
+    exact: true
+  },
+  {
     text: "Profile",
     url: "/profile",
     exact: true

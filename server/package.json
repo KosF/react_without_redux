@@ -1,0 +1,23 @@
+{
+  "name": "graphql-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon app.js",
+    "client": "npm start --prefix ../application",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
+  },
+  "author": "KosF",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/react-hooks": "^3.1.3",
+    "concurrently": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.1.1",
+    "mongoose": "^5.4.17",
+    "nodemon": "^1.18.10"
+  }
+}
